@@ -51,8 +51,7 @@ console.log(KareninAlani(11));
 	4. Hesaplanan çemberin çevresi döndürülecektir.
 */
 
-function CemberinCevresi(yaricap) {
-  return 2 * pi * yaricap; // 2 * pi * yaricap hesaplaması yapıldı
+function CemberinCevresi(/* kodlar buraya */) {
   /* kodlar buraya */
 }
 
@@ -66,8 +65,7 @@ console.log(CemberinCevresi(5));
 	4. Hesaplanan çemberin alanı döndürülecektir.
 */
 
-function CemberinAlani(yaricap, pi) {
-  return pi * Math.pow(yaricap, 2); // pi * (yaricapın karesi) hesaplaması yapıldı
+function CemberinAlani(/* kodlar buraya */) {
   /* kodlar buraya */
 }
 
@@ -108,19 +106,6 @@ let ucetambolunenler,
   tekraredensayilar;
 
 // 3a çözümü
-const sayilarLength = sayilar.length;
-enkucuk = sayilar[0]; // En küçük sayıyı ilk eleman olarak  atadık
-enbuyuk = sayilar[0]; // En büyük sayıyı ilk eleman olarak atadık
-for (let i = 0; i < sayilarLength; i++) {
-  if (sayilar[i] < enkucuk) {
-    enkucuk = sayilar[i]; // En küçük sayıyı güncelledik
-  }
-  if (sayilar[i] > enbuyuk) {
-    enbuyuk = sayilar[i]; // En büyük sayıyı güncelledik
-  }
-}
-console.log("En küçük sayı:", enkucuk);
-console.log("En büyük sayı:", enbuyuk); 
 
 /* kodlar buraya */
 
@@ -133,46 +118,29 @@ sayilar.forEach((sayi) => {
 });
 console.log("3'e tam bölünen sayılar:", ucebolunenler); 
 
+ucetambolunenler = [];
+sayilar.forEach((sayi) => { 
+  if (sayi % 3 === 0) {
+    ucetambolunenler.push(sayi);
+  }
+});
+console.log("3'e tam bölünen sayılar:", ucetambolunenler);  
 /* kodlar buraya */
 
 // 3c çözümü:
-ucebolunenlerintoplami = ucebolunenler.reduce((toplam, sayi) => {
-  return toplam + sayi; // 3'e tam bölünen sayıların toplamını hesapladık
-}, 0);  
-console.log("3'e tam bölünen sayıların toplamı:", ucebolunenlerintoplami);
-
 
 /* kodlar buraya */
 
 // 3d çözümü
 
-besyuzdenkucuksayilar = sayilar.filter((sayi) => {
-  return sayi < 500; // 500'den küçük sayıları filtreledik
-});
-console.log("500'den küçük sayılar:", besyuzdenkucuksayilar);   
-
-
 /* kodlar buraya */
 
 // 3e çözümü
 
-siralisayilar = besyuzdenkucuksayilar.sort((a, b) => {
-  return a - b; // Sayıları küçükten büyüğe sıraladık 
-});
-console.log("Küçükten büyüğe sıralanmış sayılar:", siralisayilar);  
-
 /* kodlar buraya */
 
 // 3f çözümü
-tekraredensayilar = [];
-const tekrarSayilari = {}; // Tekrar sayıları için bir nesne tanımladık
-sayilar.forEach((sayi) => { 
-  if (tekrarSayilari[sayi]) {
-    tekrarSayilari[sayi] += 1; // Sayı zaten varsa, tekrar sayısını artır
-  } else {
-    tekrarSayilari[sayi] = 1; // İlk kez karşılaşılan sayıyı başlat
-  }
-})
+
 /* kodlar buraya */
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
