@@ -41,6 +41,7 @@ function KareninAlani(kenaruzunlugu) {
 }
 
 /* (Oto test yok) Yukarıdaki KareninAlani fonksiyonunu kenar uzunluğu = 10 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
+console.log(KareninAlani(11));
 
 /* GÖREV 1:  
 - CemberinCevresi fonksiyonunu kullanarak aşağıdaki yönergeleri uygulayın:
@@ -50,12 +51,13 @@ function KareninAlani(kenaruzunlugu) {
 	4. Hesaplanan çemberin çevresi döndürülecektir.
 */
 
-function CemberinCevresi(/* kodlar buraya */) {
+function CemberinCevresi(yaricap) {
+  return 2 * pi * yaricap; // 2 * pi * yaricap hesaplaması yapıldı
   /* kodlar buraya */
 }
 
 /* (Oto test yok) Yukarıdaki CemberinCevresi fonksiyonunu yarıçap = 5 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
-
+console.log(CemberinCevresi(5));
 /* 	GÖREV 2:  
 - CemberinAlani fonksiyonunu kullanarak aşağıdaki yönergeleri uygulayın:
 	1. Argüman olarak çemberin yarıçapını BİRİNCİ parametre olacak alacaktır. 
@@ -64,16 +66,24 @@ function CemberinCevresi(/* kodlar buraya */) {
 	4. Hesaplanan çemberin alanı döndürülecektir.
 */
 
-function CemberinAlani(/* kodlar buraya */) {
+function CemberinAlani(yaricap, pi) {
+  return pi * Math.pow(yaricap, 2); // pi * (yaricapın karesi) hesaplaması yapıldı
   /* kodlar buraya */
 }
 
 /* (Oto test yok) Yukarıdaki CemberinAlani fonksiyonunu yarıçap = 15 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
+console.log(CemberinAlani(15, pi));
 
 /* 	GÖREV 3:
 	- Sayfanın en üstünde global değişken olarak tanımlanmış bir sayilar dizisi bulunmaktadır. Bu dizi içinde 0 ile 1000 arasında rasgele oluşturulmuş tam sayılar ve ondalıklı sayılar bulunmaktadır. Bu diziyi kullanarak aşağıdakileri uygulayın:
 		3a. enbuyuk ve enkucuk isminde 2 adet değişken tanımlayın ve sayilar dizisindeki en küçük sayı ile en büyük sayıyı bu değişkenlere atayın. (for döngüsü kullanın)
-		
+		enbuyuk değişkeni sayilar dizisindeki en büyük sayıyı, enkucuk değişkeni ise sayilar dizisindeki en küçük sayıyı tutacaktır.
+    💡 İPUCU: En büyük ve en küçük sayıyı bulmak için   
+    - En küçük sayıyı bulmak için sayilar dizisinin ilk elemanını enkucuk değişkenine atayabilirsiniz.
+    - En büyük sayıyı bulmak için sayilar dizisinin ilk elemanını enbuyuk değişkenine atayabilirsiniz.
+    - Daha sonra for döngüsü ile sayilar dizisini dolaşarak her bir ele i için enkucuk ve enbuyuk değişkenlerini karşılaştırarak güncelleyebilirsiniz.
+    const      
+
 		3b. `ucetambolunenler` adında bir dizi tanımlayın ve bu diziye sayilar dizisindeki 3'ün tam katı olan sayıları atayın (.forEach metodunu kullanın)
 		
 		3c. `ucetambolunenler` dizisindeki sayıların toplamını .reduce metoduyla bulup, sonucu `ucebolunenlerintoplami` değişkenine yazdırın (.reduce metodunu kullanın)
@@ -98,27 +108,71 @@ let ucetambolunenler,
   tekraredensayilar;
 
 // 3a çözümü
+const sayilarLength = sayilar.length;
+enkucuk = sayilar[0]; // En küçük sayıyı ilk eleman olarak  atadık
+enbuyuk = sayilar[0]; // En büyük sayıyı ilk eleman olarak atadık
+for (let i = 0; i < sayilarLength; i++) {
+  if (sayilar[i] < enkucuk) {
+    enkucuk = sayilar[i]; // En küçük sayıyı güncelledik
+  }
+  if (sayilar[i] > enbuyuk) {
+    enbuyuk = sayilar[i]; // En büyük sayıyı güncelledik
+  }
+}
+console.log("En küçük sayı:", enkucuk);
+console.log("En büyük sayı:", enbuyuk); 
 
 /* kodlar buraya */
 
 // 3b çözümü:
+let ucebolunenler = [];
+sayilar.forEach((sayi) => {
+  if (sayi % 3 === 0) {
+    ucebolunenler.push(sayi); // 3'e tam bölünen sayıları diziye ekledik
+  }
+});
+console.log("3'e tam bölünen sayılar:", ucebolunenler); 
 
 /* kodlar buraya */
 
 // 3c çözümü:
+ucebolunenlerintoplami = ucebolunenler.reduce((toplam, sayi) => {
+  return toplam + sayi; // 3'e tam bölünen sayıların toplamını hesapladık
+}, 0);  
+console.log("3'e tam bölünen sayıların toplamı:", ucebolunenlerintoplami);
+
 
 /* kodlar buraya */
 
 // 3d çözümü
 
+besyuzdenkucuksayilar = sayilar.filter((sayi) => {
+  return sayi < 500; // 500'den küçük sayıları filtreledik
+});
+console.log("500'den küçük sayılar:", besyuzdenkucuksayilar);   
+
+
 /* kodlar buraya */
 
 // 3e çözümü
 
+siralisayilar = besyuzdenkucuksayilar.sort((a, b) => {
+  return a - b; // Sayıları küçükten büyüğe sıraladık 
+});
+console.log("Küçükten büyüğe sıralanmış sayılar:", siralisayilar);  
+
 /* kodlar buraya */
 
 // 3f çözümü
-
+tekraredensayilar = [];
+const tekrarSayilari = {}; // Tekrar sayıları için bir nesne tanımladık
+sayilar.forEach((sayi) => { 
+  if (tekrarSayilari[sayi]) {
+    tekrarSayilari[sayi] += 1; // Sayı zaten varsa, tekrar sayısını artır
+  } else {
+    tekrarSayilari[sayi] = 1; // İlk kez karşılaşılan sayıyı başlat
+  }
+})
 /* kodlar buraya */
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
